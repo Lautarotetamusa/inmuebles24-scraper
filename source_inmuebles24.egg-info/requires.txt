@@ -1,0 +1,8 @@
+airbyte-cdk~=0.1
+bs4~=0.0.1
+js2py~=0.71
+
+[tests]
+pytest~=6.1
+pytest-mock~=3.6.1
+source-acceptance-test
