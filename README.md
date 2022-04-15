@@ -5,7 +5,7 @@
 
 ### Install packge dependencies
 ```
-apt install git
+apt install git python python3-pip
 ```
 
 ### Install docker
@@ -31,8 +31,21 @@ git clone https://github.com/airbytehq/airbyte.git
 ```
 cd airbyte/airbyte-integrations/connectors/
 git clone https://github.com/Lautarotetamusa/inmuebles24-scraper.git
+mv -r inmuebles24-scraper/ source_inmuebles24
+cd source_inmuebles24/
 ```
 ## Execute
-
-cd airbyte
+```
+sudo pip install -r requirements.txt
+sudo docker build . -t airbyte/source-inmuebles24:dev
+```
+test the scraper
+```
+sudo docker run --rm -v $(pwd)/secrets:/secrets -v $(pwd)/integration_tests:/integration_tests airbyte/source-inmuebles24:dev read --config /secrets/config.json --catalog /integration_tests/configured_catalog.json
+```
+## Web
+```
 docker-compose up
+```
+go to localhost:8000
+add source
