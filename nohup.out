@@ -1,0 +1,2 @@
+/usr/bin/atom: línea 86:  4564 `trap' para punto de parada/seguimiento               (`core' generado) nohup "$ATOM_PATH" --executed-from="$(pwd)" --pid=$$ "$@" > "$ATOM_HOME/nohup.out" 2>&1
+[4564:0428/093918.007711:FATAL:electron_main_delegate.cc(254)] Running as root without --no-sandbox is not supported. See https://crbug.com/638180.

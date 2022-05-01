@@ -1,0 +1,20 @@
+{
+  "documentationUrl": "https://docsurl.com",
+  "connectionSpecification": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Inmuebles24 Spec",
+    "type": "object",
+    "required": ["Filter"],
+    "additionalProperties": false,
+    "properties": {
+      "Filter": {
+        "type": "string",
+        "description": "URL filter: departamentos-en-venta-hasta-3-recamaras-ordenado-por-fechaonline-descendente.html"
+      },
+      "Message": {
+        "type": "string",
+        "description": "VARIABLES: nombre, titulo, zona, sitio, referencia, telefono\n Hola {[nombre]|que tal como estás?|como te va?}, {vi tu publicación|estaba viendo una publicación tuya} [titulo] con precio de [precio], {vi que está en la zona|y me di cuenta que estaba en la zona} [zona], {quiero hacerte una propuesta y quiero más información| tengo unas dudas y quiero preguntarte unas cosas| tengo unas dudas y me gustaría pregunta unos puntos importantes} te dejo mi sitio web [sitio] y la referencia [referencia] para seguir en contacto, este mes en temas legales de escrituración te propongo hacerlo con un descuento para agilizar la operación. Gracias, te paso mi whatsapp por si tienes dudas: [telefono]"
+      }
+    }
+  }
+}
