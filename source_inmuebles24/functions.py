@@ -38,7 +38,7 @@ def get_paging(data):
 def api_params(url):
 
     params = {
-      "api_key": os.environ["api_key"],
+      "api_key": "RQDAOZCd4mlujy7M7JKtfvelJWEROoR1",#os.environ["api_key"],
       "url":url,
       "render_js":"1",
     }
@@ -62,19 +62,19 @@ def format_message(msg, post, phone):
         return ""
 
 def read_bucket():
-    key = os.environ["bucket_key"],
-    secret_key = os.environ["bucket_secret"],
-    bucket = os.environ["bucket"],
-    file = os.environ["filename"],
+    #key = os.environ["bucket_key"],
+    #secret_key = os.environ["bucket_secret"],
+    #bucket = os.environ["bucket_name"],
+    #file = os.environ["filename"],
 
-    f = smart_open.open(f"s3://{key}:{secret_key}@{bucket}{file}", encoding='ISO-8859–1')
+    f = smart_open.open(f"s3://AKIA3YE4AEODGS5LKYRC:jpME/bgj9wL749IKffUHHVpOabKsdewlMzeEazJt@inmuebles24-scraper-bucket/input/data.csv", encoding='ISO-8859–1')
 
     a = [{k: str(v) for k, v in row.items()}
         for row in csv.DictReader(f, skipinitialspace=True)]
     return a
 
-
-print(os.environ["api_key"])
-print(os.environ["bucket_secret"])
-print(os.environ["bucket"])
-print(os.environ["filename"])
+#print(read_bucket())
+#print(os.environ["api_key"])
+#print(os.environ["bucket_secret"])
+#print(os.environ["bucket_name"])
+#print(os.environ["filename"])

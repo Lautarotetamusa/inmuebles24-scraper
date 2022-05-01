@@ -9,8 +9,7 @@ integration_tests/invalid_config.json
 integration_tests/sample_config.json
 integration_tests/sample_state.json
 source_inmuebles24/__init__.py
-source_inmuebles24/message.py
-source_inmuebles24/readS3.py
+source_inmuebles24/functions.py
 source_inmuebles24/scraper.py
 source_inmuebles24/source.py
 source_inmuebles24/spec.json
