@@ -62,12 +62,17 @@ def format_message(msg, post, phone):
         return ""
 
 def read_bucket():
-    #key = os.environ["bucket_key"],
+    key = "AKIA3YE4AEODPFIOEN4Q"#os.environ["bucket_key"],
+    secret_key = "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"
+    bucket_name = "inmuebles24-scraper-bucket"
+    filename = "/input/data.csv"
     #secret_key = os.environ["bucket_secret"],
     #bucket = os.environ["bucket_name"],
     #file = os.environ["filename"],
 
-    f = smart_open.open(f"s3://AKIA3YE4AEODGS5LKYRC:jpME/bgj9wL749IKffUHHVpOabKsdewlMzeEazJt@inmuebles24-scraper-bucket/input/data.csv", encoding='ISO-8859–1')
+    uri = f"s3://{key}:{secret_key}@{bucket_name}{filename}"
+
+    f = smart_open.open(uri, encoding='ISO-8859–1')
 
     a = [{k: str(v) for k, v in row.items()}
         for row in csv.DictReader(f, skipinitialspace=True)]
