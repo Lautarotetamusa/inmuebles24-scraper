@@ -9,7 +9,7 @@
     "properties": {
       "Filter": {
         "type": "string",
-        "description": "URL filter: departamentos-en-venta-hasta-3-recamaras-ordenado-por-fechaonline-descendente.html"
+        "description": "Request Filters"
       },
       "Message": {
         "type": "string",

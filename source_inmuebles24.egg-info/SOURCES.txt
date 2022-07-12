@@ -8,9 +8,9 @@ integration_tests/configured_catalog.json
 integration_tests/invalid_config.json
 integration_tests/sample_config.json
 integration_tests/sample_state.json
+source_inmuebles24/Scraper.py
 source_inmuebles24/__init__.py
-source_inmuebles24/functions.py
-source_inmuebles24/scraper.py
+source_inmuebles24/schema.json
 source_inmuebles24/source.py
 source_inmuebles24/spec.json
 source_inmuebles24.egg-info/PKG-INFO

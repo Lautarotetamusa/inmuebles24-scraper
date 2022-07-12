@@ -10,7 +10,8 @@ MAIN_REQUIREMENTS = [
     "bs4~=0.0.1",
     "js2py~=0.71",
     "smart_open[s3]~=6.0.0",
-    "spintax~=1.0.4"
+    "spintax~=1.0.4",
+    "random2==1.0.1"
 ]
 
 TEST_REQUIREMENTS = [

@@ -9,6 +9,7 @@ import json
 
 from . import Scraper
 
+from airbyte_cdk.sources.streams.core import Stream
 from airbyte_cdk.logger import AirbyteLogger
 from airbyte_cdk.sources import Source
 from airbyte_cdk.models import (
@@ -39,8 +40,43 @@ class SourceInmuebles24(Source):
         streams = []
 
         stream_name = "Properties"
-        with open("schema.json") as f:
-            json_schema = f.read()
+
+        json_schema = {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "id":       {"type": "string"},
+            "title":    {"type": "string"},
+            "price":    {"type": "string"},
+            "currency": {"type": "string"},
+            "type":     {"type": "string"},
+            "url":      {"type": "string"},
+            "location": {
+              "type": "object",
+              "properties": {
+                  "zona":     {"type": "string"},
+                  "ciudad":   {"type": "string"},
+                  "provinicia":   {"type": "string"}
+              }
+            },
+            "publisher": {
+              "type": "object",
+              "properties":{
+                  "id":       {"type": "string"},
+                  "name":     {"type": "string"},
+                  "whatsapp": {"type": "string"},
+                  "phone":    {"type": "string"},
+                  "cellPhone":{"type": "string"},
+              }
+            },
+            "terreno":      {"type": "integer"},
+            "construido":   {"type": "integer"},
+            "recamaras":    {"type": "integer"},
+            "banios":       {"type": "integer"},
+            "garege":       {"type": "integer"},
+            "antiguedad":   {"type": "integer"}
+          }
+        }
 
         streams.append(AirbyteStream(name=stream_name, json_schema=json_schema))
         return AirbyteCatalog(streams=streams)
@@ -52,6 +88,7 @@ class SourceInmuebles24(Source):
 
         #Get the filters
         filter = config["Filter"]
+        print(json.dumps(filter, indent=4))
         message = config["Message"]
 
         #Run the scraper
@@ -62,8 +99,7 @@ class SourceInmuebles24(Source):
         #
 
         #Print the messages
-        airbyte_messages =
-        [
+        airbyte_messages = [
             AirbyteMessage(type=Type.RECORD,
                 record=AirbyteRecordMessage(stream="Properties", data=post, emitted_at=int(datetime.now().timestamp()) * 1000),
             )

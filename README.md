@@ -45,7 +45,12 @@ sudo docker run --rm -v $(pwd)/secrets:/secrets -v $(pwd)/integration_tests:/int
 ```
 ## Web
 ```
-docker-compose up
+sudo docker-compose up
 ```
 go to localhost:8000
-add source
+
+## Add the source to the UI
+[Setup etl sources video](https://airbyte.com/blog/how-to-build-etl-sources-in-under-30-minutes)
+
+Docker repository name:  airbyte/source-inmuebles24
+Docker image tag: dev
