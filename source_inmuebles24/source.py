@@ -87,8 +87,9 @@ class SourceInmuebles24(Source):
     ) -> Generator[AirbyteMessage, None, None]:
 
         #Get the filters
-        filter = config["Filter"]
-        print(json.dumps(filter, indent=4))
+        filter = json.loads(config["Filter"])
+        print(filter)
+        print(type(filter))
         message = config["Message"]
 
         #Run the scraper
