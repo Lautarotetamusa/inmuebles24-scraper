@@ -92,12 +92,22 @@ class SourceInmuebles24(Source):
         print(type(filter))
         message = config["Message"]
 
+        bucket_params = config["Bucket"]
+
+        api_params = {
+          "api_key": config["api_key"],
+          "render_js":"1",
+        }
+
         #Run the scraper
         time_start = time.time()
         print("Scrapper started")
-        posts = Scraper.get_postings(filter, message)
-        print("extracted", len(posts), "properties in", time.time() - time_start, "seconds")
-        #
+        posts = Scraper.get_postings(filter, api_params, bucket_params, message)
+
+        print(len(props), "Properties extracted in ", time.time()-time_start, " seconds")
+        print("Total api calls: ",  api_requests.api_calls)
+        print("Succes api calls: ", api_requests.succes_api_calls)
+        print("Succes percent: ",   api_requests.succes_api_calls / api_requests.api_calls * 100)
 
         #Print the messages
         airbyte_messages = [

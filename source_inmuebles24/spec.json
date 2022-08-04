@@ -4,12 +4,41 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "title": "Inmuebles24 Spec",
     "type": "object",
-    "required": ["Filter"],
+    "required": ["Filter", "Bucket", "api_key"],
     "additionalProperties": false,
     "properties": {
       "Filter": {
         "type": "string",
+        "order": 0,
         "description": "Request Filters"
+      },
+      "Bucket": {
+        "type": "object",
+        "order": 2,
+        "properties": {
+          "bucket_name":{
+            "type": "string"
+          },
+          "key":{
+            "type": "string",
+            "airbyte_secret": true
+          },
+          "secret_key":{
+            "type": "string",
+            "airbyte_secret": true
+          },
+          "filename":{
+            "type": "string",
+            "description": "filename in Bucket contains the sender data"
+          }
+        },
+        "description": "Bucket contains the senders data"
+      },
+      "api_key":{
+        "type": "string",
+        "order": 1,
+        "airbyte_secret": true,
+        "description": "Api key for webscrapingapi.com"
       },
       "Message": {
         "type": "string",
