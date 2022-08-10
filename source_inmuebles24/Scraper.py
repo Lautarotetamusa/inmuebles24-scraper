@@ -27,6 +27,7 @@ def get_phone(post, api_params, sender, msg=""):
         #Send a message and get the phone
         while True:
             detail_data["message"] = functions.format_message(msg, post, sender)
+            print(detail_data["message"])
 
             publisher = api_requests.post(contact_url, detail_data, api_params, "Contacting publisher: ")['publisherOutput']
 
@@ -41,54 +42,6 @@ def get_phone(post, api_params, sender, msg=""):
                 #El mensaje se envio con exito, devolvemos el publisher
                 print(detail_data["message"])
                 return publisher
-
-
-
-#Send message to the publisher
-def contact(post, api_params, msg, sender):
-    #post, post['publisher']['id']
-    detail_data = {
-        "email":sender['email'],
-        "name": sender['name'],
-        "phone":sender['phone'],
-        "page":"Listado",
-        "publisherId":post['publisher']['id'],
-        "postingId": post["id"]
-    }
-
-    while True:
-        detail_data["message"] = functions.format_message(msg, post, sender)
-
-        publisher = api_requests.post(contact_url, detail_data, api_params, "Contacting publisher: ")['publisherOutput']
-
-        # SI el publisher es NONE es porque ya se envio un mensaje igual a este publisher
-        if publisher == None:
-            # Agregamos un string random2 al final del mensaje
-            print("Mensaje repetido, reenviando")
-            msg += "\n\n"+"".join(random2.choice(string.digits) for i in range(10))
-        elif "mailerror" in publisher: #The sender mail is wrong and server return a 500 code
-            return None
-        else:
-            #El mensaje se envio con exito, devolvemos el publisher
-            print(detail_data["message"])
-            return publisher
-#View publisher phone
-def view_phone(post, api_params):
-    letters = string.ascii_letters
-    digits  = string.digits
-
-    # Genera random2 name, phone, email
-    #post["id"], post['publisher']['id']
-    detail_data = {
-        "name": ''.join(random2.choice(letters) for i in range(10)),
-        "phone":''.join(random2.choice(digits)  for i in range(10)),
-        "email":''.join(random2.choice(letters) for i in range(10))+"@gmail.com",
-        "publisherId": post['publisher']['id'],
-        "page":"Listado",
-        "postingId": post["id"],
-    }
-
-    publisher = api_requests.post(view_url, detail_data, api_params, 'View phone: ')['publisherOutput']
 
 
 #Get the all the postings in one search
