@@ -2,7 +2,6 @@ from . import api_requests, functions
 import random2
 import string
 
-
 site = 'https://www.inmuebles24.com'
 view_url = "https://www.inmuebles24.com/rp-api/leads/view"
 list_url = "https://www.inmuebles24.com/rplis-api/postings"
