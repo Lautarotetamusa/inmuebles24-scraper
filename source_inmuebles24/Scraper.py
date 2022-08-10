@@ -26,10 +26,10 @@ def get_phone(post, api_params, sender, msg=""):
         #Send a message and get the phone
         while True:
             detail_data["message"] = functions.format_message(msg, post, sender)
-            print(detail_data["message"])
 
             publisher = api_requests.post(contact_url, detail_data, api_params, "Contacting publisher: ")['publisherOutput']
 
+            print(detail_data["message"])
             # SI el publisher es NONE es porque ya se envio un mensaje igual a este publisher
             if publisher == None:
                 # Agregamos un string random2 al final del mensaje
@@ -39,7 +39,6 @@ def get_phone(post, api_params, sender, msg=""):
                 return None
             else:
                 #El mensaje se envio con exito, devolvemos el publisher
-                print(detail_data["message"])
                 return publisher
 
 
