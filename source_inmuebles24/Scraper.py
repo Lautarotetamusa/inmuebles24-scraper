@@ -113,4 +113,8 @@ def get_postings(filters, api_params, bucket_params, msg=""):
         filters["pagina"] = page
         last_page = data["paging"]["lastPage"]
 
+        print("Total api calls: ",  api_requests.api_calls)
+        print("Succes api calls: ", api_requests.succes_api_calls)
+        print("Succes percent: ",   api_requests.succes_api_calls / api_requests.api_calls * 100)
+
     return posts

@@ -105,9 +105,6 @@ class SourceInmuebles24(Source):
         posts = Scraper.get_postings(filter, api_params, bucket_params, message)
 
         print(len(posts), "Properties extracted in ", time.time()-time_start, " seconds")
-        print("Total api calls: ",  api_requests.api_calls)
-        print("Succes api calls: ", api_requests.succes_api_calls)
-        print("Succes percent: ",   api_requests.succes_api_calls / api_requests.api_calls * 100)
 
         #Print the messages
         airbyte_messages = [
