@@ -90,7 +90,6 @@ def view_phone(post, api_params):
 
     publisher = api_requests.post(view_url, detail_data, api_params, 'View phone: ')['publisherOutput']
 
-    return publisher
 
 #Get the all the postings in one search
 def get_postings(filters, api_params, bucket_params, msg=""):
